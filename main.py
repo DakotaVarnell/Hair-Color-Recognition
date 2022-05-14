@@ -12,7 +12,7 @@ image = cv2.imread("images/testImage.jpg", cv2.IMREAD_COLOR)
 resize_value = 400
 
 #Create our actual aspect ratio
-ratio = resize_valuet/w
+ratio = resize_value/w
 dim = (resize_value, int(h * ratio))
 
 #Resize the image to a manageable size
@@ -24,4 +24,10 @@ cv2.imshow("Resized_Image",resized_image)
 #Provide a wait time for the image to be displayed 0 so it is continuously displayed
 cv2.waitKey(0)
 
+#Make a copy of the original image and then display a rectangle on it 
+output = resized_image.copy()
+rectangle = cv2.rectangle(output, (100,50),(50, 10), (255, 0, 0), 2)
 
+#Display the new image with the rectangle
+cv2.imshow("ddd", output)
+cv2.waitKey(0)
