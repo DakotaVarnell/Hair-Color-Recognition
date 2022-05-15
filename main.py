@@ -1,8 +1,9 @@
 from tkinter import W
 import cv2
+import numpy as np
 
 
-#Read the image to the image variable to do operations on it
+#Read the image to the image variable 
 image = cv2.imread("images/testImage.jpg", cv2.IMREAD_COLOR)
 
 #Resize the image to make it easier to work with
@@ -18,16 +19,25 @@ dim = (resize_value, int(h * ratio))
 #Resize the image to a manageable size
 resized_image = cv2.resize(image, dim)
 
-#Actually display the image
-cv2.imshow("Resized_Image",resized_image)
+#Actually display the resized image
+cv2.imshow("Resized_Image", resized_image)
 
-#Provide a wait time for the image to be displayed 0 so it is continuously displayed
-cv2.waitKey(0)
+# #Provide a wait time for the image to be displayed 0 so it is displayed indefinitely
+# cv2.waitKey(0)
 
-#Make a copy of the original image and then display a rectangle on it 
-output = resized_image.copy()
-rectangle = cv2.rectangle(output, (100,50),(50, 10), (255, 0, 0), 2)
+# #Make a copy of the original image and then display a rectangle on it 
+# drawn_output = resized_image.copy()
+# rectangle = cv2.rectangle(drawn_output, (100,50),(50, 10), (255, 0, 0), 2)
 
-#Display the new image with the rectangle
-cv2.imshow("ddd", output)
+# #Display the new image with the rectangle
+# cv2.imshow("Drawn Image", drawn_output)
+# cv2.waitKey(0)
+
+#Detect the edges of our image and then display the image of edges
+
+#Create an edges variable that is the mapped edges of our image
+edges = cv2.Canny(resized_image, 100, 200)
+
+#Display the image with all of the detected edges
+cv2.imshow("Image Edges", edges)
 cv2.waitKey(0)
