@@ -1,5 +1,6 @@
 from tkinter import W
 import cv2
+from cv2 import GaussianBlur
 import numpy as np
 
 
@@ -35,9 +36,15 @@ cv2.imshow("Resized_Image", resized_image)
 
 #Detect the edges of our image and then display the image of edges
 
-#Create an edges variable that is the mapped edges of our image
-edges = cv2.Canny(resized_image, 100, 200)
+# #Create an edges variable that is the mapped edges of our image
+# edges = cv2.Canny(resized_image, 100, 200)
 
-#Display the image with all of the detected edges
-cv2.imshow("Image Edges", edges)
+# #Display the image with all of the detected edges
+# cv2.imshow("Image Edges", edges)
+# cv2.waitKey(0)
+
+#Blur the image to decrease a lot of the noise and edges of the image
+blurred = GaussianBlur(resized_image, (7,7), 0)
+cv2.imshow("Blurred", blurred)
+
 cv2.waitKey(0)
